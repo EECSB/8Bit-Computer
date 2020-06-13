@@ -1,0 +1,3054 @@
+|8bitComputer
+Clk_Out <= PC:inst18.Q1
+CLOCK_50 => pll:inst13.inclk0
+BusOUT1 <> PC:inst1.Q1
+BusOUT1 <> RAM:inst.D1
+BusOUT1 <> ALU:ALU.D1
+pin_name1 => PC:inst1.WE
+CLR => RAM:inst.CLR
+CLR => Register:RegisterA.CLR
+CLR => Register:ALURegisterB.CLR
+RAM_WE => RAM:inst.WE
+RAM_RE => RAM:inst.RE
+A0 => RAM:inst.A0
+A1 => RAM:inst.A1
+A2 => RAM:inst.A2
+A3 => RAM:inst.A3
+OutEnable => ALU:ALU.Out_Enable
+Sub => ALU:ALU.Sub
+BusOUT3 <> RAM:inst.D3
+BusOUT3 <> ALU:ALU.D3
+BusOUT3 <> PC:inst1.Q3
+BusOUT4 <> RAM:inst.D4
+BusOUT4 <> ALU:ALU.D4
+BusOUT4 <> PC:inst1.Q4
+BusOUT5 <> RAM:inst.D5
+BusOUT5 <> ALU:ALU.D5
+BusOUT6 <> RAM:inst.D6
+BusOUT6 <> ALU:ALU.D6
+BusOUT7 <> RAM:inst.D7
+BusOUT7 <> ALU:ALU.D7
+BusOUT8 <> RAM:inst.D8
+BusOUT8 <> ALU:ALU.D8
+RERegisterA => Register:RegisterA.ReadEnable
+WERegisterA => Register:RegisterA.WriteEnable
+RERegisterB => Register:ALURegisterB.ReadEnable
+WERegisterB => Register:ALURegisterB.WriteEnable
+BusOUT2 <> RAM:inst.D2
+BusOUT2 <> ALU:ALU.D2
+BusOUT2 <> PC:inst1.Q2
+CLK => ~NO_FANOUT~
+
+
+|8bitComputer|PC:inst18
+Q1 <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+Clk => JK_flip_flop_master_slave:inst.Clk
+WE => inst4.OE
+WE => inst5.OE
+WE => inst6.OE
+WE => inst7.OE
+Q2 <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+Q3 <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+Q4 <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+D1 => ~NO_FANOUT~
+D2 => ~NO_FANOUT~
+Clk_Enable => ~NO_FANOUT~
+D3 => ~NO_FANOUT~
+D4 => ~NO_FANOUT~
+
+
+|8bitComputer|PC:inst18|JK_flip_flop_master_slave:inst
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst18|JK_flip_flop_master_slave:inst1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst18|JK_flip_flop_master_slave:inst2
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst18|JK_flip_flop_master_slave:inst3
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst17
+Q1 <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+Clk => JK_flip_flop_master_slave:inst.Clk
+WE => inst4.OE
+WE => inst5.OE
+WE => inst6.OE
+WE => inst7.OE
+Q2 <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+Q3 <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+Q4 <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+D1 => ~NO_FANOUT~
+D2 => ~NO_FANOUT~
+Clk_Enable => ~NO_FANOUT~
+D3 => ~NO_FANOUT~
+D4 => ~NO_FANOUT~
+
+
+|8bitComputer|PC:inst17|JK_flip_flop_master_slave:inst
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst17|JK_flip_flop_master_slave:inst1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst17|JK_flip_flop_master_slave:inst2
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst17|JK_flip_flop_master_slave:inst3
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst16
+Q1 <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+Clk => JK_flip_flop_master_slave:inst.Clk
+WE => inst4.OE
+WE => inst5.OE
+WE => inst6.OE
+WE => inst7.OE
+Q2 <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+Q3 <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+Q4 <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+D1 => ~NO_FANOUT~
+D2 => ~NO_FANOUT~
+Clk_Enable => ~NO_FANOUT~
+D3 => ~NO_FANOUT~
+D4 => ~NO_FANOUT~
+
+
+|8bitComputer|PC:inst16|JK_flip_flop_master_slave:inst
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst16|JK_flip_flop_master_slave:inst1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst16|JK_flip_flop_master_slave:inst2
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst16|JK_flip_flop_master_slave:inst3
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst11
+Q1 <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+Clk => JK_flip_flop_master_slave:inst.Clk
+WE => inst4.OE
+WE => inst5.OE
+WE => inst6.OE
+WE => inst7.OE
+Q2 <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+Q3 <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+Q4 <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+D1 => ~NO_FANOUT~
+D2 => ~NO_FANOUT~
+Clk_Enable => ~NO_FANOUT~
+D3 => ~NO_FANOUT~
+D4 => ~NO_FANOUT~
+
+
+|8bitComputer|PC:inst11|JK_flip_flop_master_slave:inst
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst11|JK_flip_flop_master_slave:inst1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst11|JK_flip_flop_master_slave:inst2
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst11|JK_flip_flop_master_slave:inst3
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|pll:inst13
+inclk0 => sub_wire3[0].IN1
+c0 <= altpll:altpll_component.clk
+
+
+|8bitComputer|pll:inst13|altpll:altpll_component
+inclk[0] => pll_altpll:auto_generated.inclk[0]
+inclk[1] => pll_altpll:auto_generated.inclk[1]
+fbin => ~NO_FANOUT~
+pllena => ~NO_FANOUT~
+clkswitch => ~NO_FANOUT~
+areset => ~NO_FANOUT~
+pfdena => ~NO_FANOUT~
+clkena[0] => ~NO_FANOUT~
+clkena[1] => ~NO_FANOUT~
+clkena[2] => ~NO_FANOUT~
+clkena[3] => ~NO_FANOUT~
+clkena[4] => ~NO_FANOUT~
+clkena[5] => ~NO_FANOUT~
+extclkena[0] => ~NO_FANOUT~
+extclkena[1] => ~NO_FANOUT~
+extclkena[2] => ~NO_FANOUT~
+extclkena[3] => ~NO_FANOUT~
+scanclk => ~NO_FANOUT~
+scanclkena => ~NO_FANOUT~
+scanaclr => ~NO_FANOUT~
+scanread => ~NO_FANOUT~
+scanwrite => ~NO_FANOUT~
+scandata => ~NO_FANOUT~
+phasecounterselect[0] => ~NO_FANOUT~
+phasecounterselect[1] => ~NO_FANOUT~
+phasecounterselect[2] => ~NO_FANOUT~
+phasecounterselect[3] => ~NO_FANOUT~
+phaseupdown => ~NO_FANOUT~
+phasestep => ~NO_FANOUT~
+configupdate => ~NO_FANOUT~
+fbmimicbidir <> <GND>
+clk[0] <= clk[0].DB_MAX_OUTPUT_PORT_TYPE
+clk[1] <= clk[1].DB_MAX_OUTPUT_PORT_TYPE
+clk[2] <= clk[2].DB_MAX_OUTPUT_PORT_TYPE
+clk[3] <= clk[3].DB_MAX_OUTPUT_PORT_TYPE
+clk[4] <= clk[4].DB_MAX_OUTPUT_PORT_TYPE
+extclk[0] <= <GND>
+extclk[1] <= <GND>
+extclk[2] <= <GND>
+extclk[3] <= <GND>
+clkbad[0] <= <GND>
+clkbad[1] <= <GND>
+enable1 <= <GND>
+enable0 <= <GND>
+activeclock <= <GND>
+clkloss <= <GND>
+locked <= <GND>
+scandataout <= <GND>
+scandone <= <GND>
+sclkout0 <= <GND>
+sclkout1 <= <GND>
+phasedone <= <GND>
+vcooverrange <= <GND>
+vcounderrange <= <GND>
+fbout <= <GND>
+fref <= <GND>
+icdrclk <= <GND>
+
+
+|8bitComputer|pll:inst13|altpll:altpll_component|pll_altpll:auto_generated
+clk[0] <= pll1.CLK
+clk[1] <= pll1.CLK1
+clk[2] <= pll1.CLK2
+clk[3] <= pll1.CLK3
+clk[4] <= pll1.CLK4
+inclk[0] => pll1.CLK
+inclk[1] => pll1.CLK1
+
+
+|8bitComputer|PC:inst1
+Q1 <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+Clk => JK_flip_flop_master_slave:inst.Clk
+WE => inst4.OE
+WE => inst5.OE
+WE => inst6.OE
+WE => inst7.OE
+Q2 <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+Q3 <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+Q4 <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+D1 => ~NO_FANOUT~
+D2 => ~NO_FANOUT~
+Clk_Enable => ~NO_FANOUT~
+D3 => ~NO_FANOUT~
+D4 => ~NO_FANOUT~
+
+
+|8bitComputer|PC:inst1|JK_flip_flop_master_slave:inst
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst1|JK_flip_flop_master_slave:inst1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst1|JK_flip_flop_master_slave:inst2
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|PC:inst1|JK_flip_flop_master_slave:inst3
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|RAM:inst
+D1 <> RAMCells:inst.D1
+CLK => RAMCells:inst.CLK
+CLR => RAMCells:inst.CLR
+RE => inst1.IN0
+RE => inst34.IN0
+RE => inst35.IN0
+RE => inst6.IN0
+RE => inst8.IN0
+RE => inst10.IN0
+RE => inst12.IN0
+RE => inst14.IN0
+RE => inst16.IN0
+RE => inst18.IN0
+RE => inst20.IN0
+RE => inst22.IN0
+RE => inst24.IN0
+RE => inst26.IN0
+RE => inst28.IN0
+RE => inst30.IN0
+RE => inst32.IN0
+A2 => inst4.IN0
+A2 => dec5.IN0
+A2 => dec6.IN0
+A2 => dec7.IN0
+A2 => dec8.IN0
+A2 => dec13.IN0
+A2 => dec14.IN0
+A2 => dec15.IN0
+A2 => dec16.IN0
+A1 => inst2.IN0
+A1 => dec3.IN1
+A1 => dec4.IN1
+A1 => dec7.IN1
+A1 => dec8.IN1
+A1 => dec11.IN1
+A1 => dec12.IN1
+A1 => dec15.IN1
+A1 => dec16.IN1
+A0 => inst38.IN0
+A0 => dec2.IN2
+A0 => dec4.IN2
+A0 => dec6.IN2
+A0 => dec8.IN2
+A0 => dec10.IN2
+A0 => dec12.IN2
+A0 => dec14.IN2
+A0 => dec16.IN2
+WE => inst34.IN1
+WE => inst37.IN1
+WE => inst36.IN1
+WE => inst7.IN1
+WE => inst9.IN1
+WE => inst11.IN1
+WE => inst13.IN1
+WE => inst15.IN1
+WE => inst17.IN1
+WE => inst19.IN1
+WE => inst21.IN1
+WE => inst23.IN1
+WE => inst25.IN1
+WE => inst27.IN1
+WE => inst29.IN1
+WE => inst31.IN1
+WE => inst33.IN1
+A3 => inst5.IN0
+A3 => dec9.IN4
+A3 => dec10.IN4
+A3 => dec11.IN4
+A3 => dec12.IN4
+A3 => dec13.IN4
+A3 => dec14.IN4
+A3 => dec15.IN4
+A3 => dec16.IN4
+D2 <> RAMCells:inst.D2
+D3 <> RAMCells:inst.D3
+D4 <> RAMCells:inst.D4
+D5 <> RAMCells:inst.D5
+D6 <> RAMCells:inst.D7
+D7 <> RAMCells:inst.D6
+D8 <> RAMCells:inst.D8
+
+
+|8bitComputer|RAM:inst|RAMCells:inst
+D3 <> Register:inst.Q3
+D3 <> Register:inst1.Q3
+D3 <> Register:inst6.Q3
+D3 <> Register:inst9.Q3
+D3 <> Register:inst10.Q3
+D3 <> Register:inst11.Q3
+D3 <> Register:inst12.Q3
+D3 <> Register:inst13.Q3
+D3 <> Register:inst2.Q3
+D3 <> Register:inst3.Q3
+D3 <> Register:inst14.Q3
+D3 <> Register:inst15.Q3
+D3 <> Register:inst16.Q3
+D3 <> Register:inst17.Q3
+D3 <> Register:inst18.Q3
+D3 <> Register:inst19.Q3
+D1 <> Register:inst.Q1
+D1 <> Register:inst1.Q1
+D1 <> Register:inst6.Q1
+D1 <> Register:inst9.Q1
+D1 <> Register:inst10.Q1
+D1 <> Register:inst11.Q1
+D1 <> Register:inst12.Q1
+D1 <> Register:inst13.Q1
+D1 <> Register:inst2.Q1
+D1 <> Register:inst3.Q1
+D1 <> Register:inst14.Q1
+D1 <> Register:inst15.Q1
+D1 <> Register:inst16.Q1
+D1 <> Register:inst17.Q1
+D1 <> Register:inst18.Q1
+D1 <> Register:inst19.Q1
+D2 <> Register:inst.Q2
+D2 <> Register:inst1.Q2
+D2 <> Register:inst6.Q2
+D2 <> Register:inst9.Q2
+D2 <> Register:inst10.Q2
+D2 <> Register:inst11.Q2
+D2 <> Register:inst12.Q2
+D2 <> Register:inst13.Q2
+D2 <> Register:inst2.Q2
+D2 <> Register:inst3.Q2
+D2 <> Register:inst14.Q2
+D2 <> Register:inst15.Q2
+D2 <> Register:inst16.Q2
+D2 <> Register:inst17.Q2
+D2 <> Register:inst18.Q2
+D2 <> Register:inst19.Q2
+D4 <> Register:inst.Q4
+D4 <> Register:inst1.Q4
+D4 <> Register:inst6.Q4
+D4 <> Register:inst9.Q4
+D4 <> Register:inst10.Q4
+D4 <> Register:inst11.Q4
+D4 <> Register:inst12.Q4
+D4 <> Register:inst13.Q4
+D4 <> Register:inst2.Q4
+D4 <> Register:inst3.Q4
+D4 <> Register:inst14.Q4
+D4 <> Register:inst15.Q4
+D4 <> Register:inst16.Q4
+D4 <> Register:inst17.Q4
+D4 <> Register:inst18.Q4
+D4 <> Register:inst19.Q4
+D5 <> Register:inst.Q5
+D5 <> Register:inst1.Q5
+D5 <> Register:inst6.Q5
+D5 <> Register:inst9.Q5
+D5 <> Register:inst10.Q5
+D5 <> Register:inst11.Q5
+D5 <> Register:inst12.Q5
+D5 <> Register:inst13.Q5
+D5 <> Register:inst2.Q5
+D5 <> Register:inst3.Q5
+D5 <> Register:inst14.Q5
+D5 <> Register:inst15.Q5
+D5 <> Register:inst16.Q5
+D5 <> Register:inst17.Q5
+D5 <> Register:inst18.Q5
+D5 <> Register:inst19.Q5
+D6 <> Register:inst.Q6
+D6 <> Register:inst1.Q6
+D6 <> Register:inst6.Q6
+D6 <> Register:inst9.Q6
+D6 <> Register:inst10.Q6
+D6 <> Register:inst11.Q6
+D6 <> Register:inst12.Q6
+D6 <> Register:inst13.Q6
+D6 <> Register:inst2.Q6
+D6 <> Register:inst3.Q6
+D6 <> Register:inst14.Q6
+D6 <> Register:inst15.Q6
+D6 <> Register:inst16.Q6
+D6 <> Register:inst17.Q6
+D6 <> Register:inst18.Q6
+D6 <> Register:inst19.Q6
+D7 <> Register:inst.Q7
+D7 <> Register:inst1.Q7
+D7 <> Register:inst6.Q7
+D7 <> Register:inst9.Q7
+D7 <> Register:inst10.Q7
+D7 <> Register:inst11.Q7
+D7 <> Register:inst12.Q7
+D7 <> Register:inst13.Q7
+D7 <> Register:inst2.Q7
+D7 <> Register:inst3.Q7
+D7 <> Register:inst14.Q7
+D7 <> Register:inst15.Q7
+D7 <> Register:inst16.Q7
+D7 <> Register:inst17.Q7
+D7 <> Register:inst18.Q7
+D7 <> Register:inst19.Q7
+D8 <> Register:inst.Q8
+D8 <> Register:inst1.Q8
+D8 <> Register:inst6.Q8
+D8 <> Register:inst9.Q8
+D8 <> Register:inst10.Q8
+D8 <> Register:inst11.Q8
+D8 <> Register:inst12.Q8
+D8 <> Register:inst13.Q8
+D8 <> Register:inst2.Q8
+D8 <> Register:inst3.Q8
+D8 <> Register:inst14.Q8
+D8 <> Register:inst15.Q8
+D8 <> Register:inst16.Q8
+D8 <> Register:inst17.Q8
+D8 <> Register:inst18.Q8
+D8 <> Register:inst19.Q8
+CLK => Register:inst.CLK
+CLK => Register:inst1.CLK
+CLK => Register:inst6.CLK
+CLK => Register:inst9.CLK
+CLK => Register:inst10.CLK
+CLK => Register:inst11.CLK
+CLK => Register:inst12.CLK
+CLK => Register:inst13.CLK
+CLK => Register:inst2.CLK
+CLK => Register:inst3.CLK
+CLK => Register:inst14.CLK
+CLK => Register:inst15.CLK
+CLK => Register:inst16.CLK
+CLK => Register:inst17.CLK
+CLK => Register:inst18.CLK
+CLK => Register:inst19.CLK
+CLR => Register:inst.CLR
+CLR => Register:inst1.CLR
+CLR => Register:inst6.CLR
+CLR => Register:inst9.CLR
+CLR => Register:inst10.CLR
+CLR => Register:inst11.CLR
+CLR => Register:inst12.CLR
+CLR => Register:inst13.CLR
+CLR => Register:inst2.CLR
+CLR => Register:inst3.CLR
+CLR => Register:inst14.CLR
+CLR => Register:inst15.CLR
+CLR => Register:inst16.CLR
+CLR => Register:inst17.CLR
+CLR => Register:inst18.CLR
+CLR => Register:inst19.CLR
+RE1 => Register:inst.ReadEnable
+WE1 => Register:inst.WriteEnable
+RE2 => Register:inst1.ReadEnable
+WE2 => Register:inst1.WriteEnable
+RE3 => Register:inst6.ReadEnable
+WE3 => Register:inst6.WriteEnable
+RE4 => Register:inst9.ReadEnable
+WE4 => Register:inst9.WriteEnable
+RE5 => Register:inst10.ReadEnable
+WE5 => Register:inst10.WriteEnable
+RE6 => Register:inst11.ReadEnable
+WE6 => Register:inst11.WriteEnable
+RE7 => Register:inst12.ReadEnable
+WE7 => Register:inst12.WriteEnable
+RE8 => Register:inst13.ReadEnable
+WE8 => Register:inst13.WriteEnable
+RE9 => Register:inst2.ReadEnable
+WE9 => Register:inst2.WriteEnable
+RE10 => Register:inst3.ReadEnable
+WE10 => Register:inst3.WriteEnable
+RE11 => Register:inst14.ReadEnable
+WE11 => Register:inst14.WriteEnable
+RE12 => Register:inst15.ReadEnable
+WE12 => Register:inst15.WriteEnable
+RE13 => Register:inst16.ReadEnable
+WE13 => Register:inst16.WriteEnable
+RE14 => Register:inst17.ReadEnable
+WE14 => Register:inst17.WriteEnable
+RE15 => Register:inst18.ReadEnable
+WE15 => Register:inst18.WriteEnable
+RE16 => Register:inst19.ReadEnable
+WE16 => Register:inst19.WriteEnable
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst1|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst6|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst9|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst10|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst11|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst12|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst13|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst2|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst3|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst14|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst15|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst16|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst17|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst18|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|RAM:inst|RAMCells:inst|Register:inst19|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|ALU:ALU
+D1 <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+Sub => Adder:inst.C_In
+Sub => inst16.IN0
+Sub => inst17.IN0
+Sub => inst18.IN0
+Sub => inst19.IN0
+Sub => inst20.IN0
+Sub => inst21.IN0
+Sub => inst22.IN0
+Sub => inst23.IN0
+A1 => Adder:inst.A
+B1 => inst16.IN1
+Out_Enable => inst8.OE
+Out_Enable => inst9.OE
+Out_Enable => inst10.OE
+Out_Enable => inst11.OE
+Out_Enable => inst12.OE
+Out_Enable => inst13.OE
+Out_Enable => inst14.OE
+Out_Enable => inst15.OE
+D2 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+A2 => Adder:inst1.A
+B2 => inst17.IN1
+D3 <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+A3 => Adder:inst2.A
+B3 => inst18.IN1
+D4 <= inst11.DB_MAX_OUTPUT_PORT_TYPE
+A4 => Adder:inst3.A
+B4 => inst19.IN1
+D5 <= inst12.DB_MAX_OUTPUT_PORT_TYPE
+A5 => Adder:inst4.A
+B5 => inst20.IN1
+D6 <= inst13.DB_MAX_OUTPUT_PORT_TYPE
+A6 => Adder:inst5.A
+B6 => inst21.IN1
+D7 <= inst14.DB_MAX_OUTPUT_PORT_TYPE
+A7 => Adder:inst6.A
+B7 => inst22.IN1
+D8 <= inst15.DB_MAX_OUTPUT_PORT_TYPE
+A8 => Adder:inst7.A
+B8 => inst23.IN1
+
+
+|8bitComputer|ALU:ALU|Adder:inst
+Sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+C_In => inst4.IN0
+C_In => inst5.IN1
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+C_Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|ALU:ALU|Adder:inst1
+Sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+C_In => inst4.IN0
+C_In => inst5.IN1
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+C_Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|ALU:ALU|Adder:inst2
+Sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+C_In => inst4.IN0
+C_In => inst5.IN1
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+C_Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|ALU:ALU|Adder:inst3
+Sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+C_In => inst4.IN0
+C_In => inst5.IN1
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+C_Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|ALU:ALU|Adder:inst4
+Sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+C_In => inst4.IN0
+C_In => inst5.IN1
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+C_Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|ALU:ALU|Adder:inst5
+Sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+C_In => inst4.IN0
+C_In => inst5.IN1
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+C_Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|ALU:ALU|Adder:inst6
+Sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+C_In => inst4.IN0
+C_In => inst5.IN1
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+C_Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|ALU:ALU|Adder:inst7
+Sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+C_In => inst4.IN0
+C_In => inst5.IN1
+A => inst.IN0
+A => inst2.IN0
+B => inst.IN1
+B => inst2.IN1
+C_Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|8bitComputer|Register:RegisterA
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|Register:RegisterA|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:RegisterA|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:RegisterA|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:RegisterA|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:RegisterA|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:RegisterA|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:RegisterA|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:RegisterA|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:ALURegisterB
+Q1 <= inst48.DB_MAX_OUTPUT_PORT_TYPE
+CLK => DFF_Master_Slave:inst11.CLK
+CLK => DFF_Master_Slave:inst10.CLK
+CLK => DFF_Master_Slave:inst7.CLK
+CLK => DFF_Master_Slave:inst6.CLK
+CLK => DFF_Master_Slave:inst5.CLK
+CLK => DFF_Master_Slave:inst4.CLK
+CLK => DFF_Master_Slave:inst2.CLK
+CLK => DFF_Master_Slave:inst3.CLK
+D1 => inst38.IN0
+ReadEnable => inst38.IN1
+ReadEnable => inst40.IN0
+ReadEnable => inst36.IN1
+ReadEnable => inst34.IN1
+ReadEnable => inst32.IN1
+ReadEnable => inst30.IN1
+ReadEnable => inst28.IN1
+ReadEnable => inst26.IN1
+ReadEnable => inst24.IN1
+CLR => DFF_Master_Slave:inst11.CLR
+CLR => DFF_Master_Slave:inst10.CLR
+CLR => DFF_Master_Slave:inst7.CLR
+CLR => DFF_Master_Slave:inst6.CLR
+CLR => DFF_Master_Slave:inst5.CLR
+CLR => DFF_Master_Slave:inst4.CLR
+CLR => DFF_Master_Slave:inst2.CLR
+CLR => DFF_Master_Slave:inst3.CLR
+WriteEnable => inst48.OE
+WriteEnable => inst47.OE
+WriteEnable => inst46.OE
+WriteEnable => inst45.OE
+WriteEnable => inst44.OE
+WriteEnable => inst43.OE
+WriteEnable => inst42.OE
+WriteEnable => inst41.OE
+Q2 <= inst47.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst36.IN0
+Q3 <= inst46.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst34.IN0
+Q4 <= inst45.DB_MAX_OUTPUT_PORT_TYPE
+D4 => inst32.IN0
+Q5 <= inst44.DB_MAX_OUTPUT_PORT_TYPE
+D5 => inst30.IN0
+Q6 <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+D6 => inst28.IN0
+Q7 <= inst42.DB_MAX_OUTPUT_PORT_TYPE
+D7 => inst26.IN0
+Q8 <= inst41.DB_MAX_OUTPUT_PORT_TYPE
+D8 => inst24.IN0
+
+
+|8bitComputer|Register:ALURegisterB|DFF_Master_Slave:inst11
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:ALURegisterB|DFF_Master_Slave:inst10
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:ALURegisterB|DFF_Master_Slave:inst7
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:ALURegisterB|DFF_Master_Slave:inst6
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:ALURegisterB|DFF_Master_Slave:inst5
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:ALURegisterB|DFF_Master_Slave:inst4
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:ALURegisterB|DFF_Master_Slave:inst2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|Register:ALURegisterB|DFF_Master_Slave:inst3
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst10.IN0
+D => inst9.IN0
+D => inst8.IN1
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+CLR => ~NO_FANOUT~
+
+
+|8bitComputer|JK_flip_flop_master_slave:inst2
+NQ <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+K => inst7.IN0
+Clk => inst7.IN1
+Clk => inst8.IN0
+Clk => inst6.IN1
+J => inst6.IN2
+Q <= inst.DB_MAX_OUTPUT_PORT_TYPE
+
+
