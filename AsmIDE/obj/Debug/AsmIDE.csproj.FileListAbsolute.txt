@@ -1,0 +1,16 @@
+c:\users\dtpc\documents\visual studio 2015\Projects\AsmIDE\AsmIDE\bin\Debug\AsmIDE.exe.config
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\bin\Debug\AsmIDE.exe
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\bin\Debug\AsmIDE.pdb
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\MainWindow.g.cs
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\App.g.cs
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\AsmIDE_MarkupCompile.cache
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\AsmIDE_MarkupCompile.lref
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\MainWindow.baml
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\AsmIDE.g.resources
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\AsmIDE.Properties.Resources.resources
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\AsmIDE.csproj.GenerateResource.Cache
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\AsmIDE.exe
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\AsmIDE.pdb
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\bin\Debug\ICSharpCode.AvalonEdit.xml
+C:\Users\DTPC\Documents\Visual Studio 2015\Projects\AsmIDE\AsmIDE\obj\Debug\AsmIDE.csprojResolveAssemblyReference.cache
