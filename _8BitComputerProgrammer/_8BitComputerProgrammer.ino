@@ -297,7 +297,7 @@ static void writeToRAM(){
       digitalWrite(35, HIGH);
       delay(10);
 
-      //Delay clock so the data can get to the the destination before the rising edge of the clock.
+      //Delay clock so the data can get to the destination before the rising edge of the clock.
       //delay(100);
       
       //CLK
