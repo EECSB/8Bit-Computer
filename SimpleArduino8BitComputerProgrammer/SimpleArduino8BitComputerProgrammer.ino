@@ -15,7 +15,7 @@ void setup() {
   pinMode(12, OUTPUT);
   pinMode(13, OUTPUT);
 
-  //Array containting your machine code.
+  //Array containing your machine code.
   int dataArray [16][12]{
         //LSB                 MSB     MEM. ADDR.          
         { 1, 0, 0, 0,  0, 1, 1, 1,    0, 0, 0, 0},  //1
