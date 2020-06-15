@@ -10,6 +10,7 @@ Here you can find:
   For more information about the project see my blog posts on: https://eecs.blog/
   
   8-Bit Computer Overview: https://eecs.blog/8-bit-computer-in-an-fpga/
+  
   8-Bit Arduino Programmer and the AsmIDE: 
   
   Note: 
