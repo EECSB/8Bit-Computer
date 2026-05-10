@@ -1,0 +1,12 @@
+x = 10;
+y = 5;
+
+if x > y {
+    print(y);
+}else{
+    goto skip;
+}
+
+skip:
+x = x + y;
+print(x);

@@ -1,0 +1,864 @@
+﻿@page "/"
+
+@using System.Text
+@using System.Text.RegularExpressions
+
+@inject IJSRuntime jsRuntime;
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+
+<PageTitle>AsmIDE + MyLang Compiler</PageTitle>
+
+
+<!-- Compiler Card -->
+<div class="card mb-4">
+
+    <div class="card-header d-flex align-items-center">
+        <strong>Compiler</strong>
+    </div>
+    
+    <div class="card-body">
+        <div class="row">
+    
+            <!-- Settings Column -->
+            <div class="col-md-3">
+                <div class="mb-2 d-flex align-items-center">
+                    <label class="form-label mb-0 me-2" style="min-width: 140px; font-size: 0.95rem;">Address Length (bits)</label>
+                    <input type="number" class="form-control form-control-sm" @bind="memAddressLength" style="width: 110px; font-size: 0.95rem;" />
+                </div>
+                <div class="mb-2 d-flex align-items-center">
+                    <label class="form-label mb-0 me-2" style="min-width: 140px; font-size: 0.95rem;">Word Length (bits)</label>
+                    <input type="number" class="form-control form-control-sm" @bind="memWordLength" style="width: 110px; font-size: 0.95rem;" />
+                </div>
+                <div class="mb-2 d-flex align-items-center">
+                    <label class="form-label mb-0 me-2" style="min-width: 140px; font-size: 0.95rem;">Memory Size</label>
+                    <input type="number" class="form-control form-control-sm" @bind="memSize" style="width: 110px; font-size: 0.95rem;" />
+                </div>
+            </div>
+    
+            <!-- Actions Column -->
+            <div class="col-md-3 d-flex flex-column align-items-start">
+                <button class="btn btn-primary mb-3" @onclick="CompileAndRender">
+                    <span class="bi bi-play-fill" aria-hidden="true"></span> Compile
+                </button>
+                <div class="form-check mb-0">
+                    <input class="form-check-input" type="checkbox" id="showSymbolsCheck" @bind="showSymbols" @bind:after="OnShowSymbolsChanged" />
+                    <label class="form-check-label" for="showSymbolsCheck" style="font-size: 14px;">Show Code To Assembly Mapping</label>
+                </div>
+            </div>
+    
+            <!-- Messages Column -->
+            <div class="col-md-6 d-flex flex-column" style="height: 100%;">
+                <div style="height: 100%; min-height: 80px; border-radius: 4px; padding: 10px; color: #fff; background: @(compilerMessages.Any() ? (compilerMessages.Any(m => m.StartsWith("Error", StringComparison.OrdinalIgnoreCase)) ? "#d9534f" : "#5cb85c") : "#f0f0f0");">
+                    @if (compilerMessages.Any())
+                    {
+                        @foreach (var message in compilerMessages)
+                        {
+                            <div>@message</div>
+                        }
+                    }
+                    else
+                    {
+                        <span style="color: #888;">No messages.</span>
+                    }
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Source Code Card -->
+<div class="card mb-3">
+    <div class="card-header d-flex align-items-center">
+        <strong>Source Code</strong>
+
+        <!-- Editor upload/download buttons -->
+        <div class="btn-group btn-group-sm ms-3">
+            <button class="btn btn-outline-secondary" @onclick='() => UploadToEditor("GetSourceCodeMonacoContent", "SetSourceCodeMonacoContent")' title="Open File">
+                <img src="assets/openFile.png" alt="Open" style="height:16px;" /> Open
+            </button>
+            <button class="btn btn-outline-secondary" @onclick='() => DownloadFromEditor("GetSourceCodeMonacoContent", "source.mylang")' title="Save File">
+                <img src="assets/saveFile.png" alt="Save" style="height:16px;" /> Save
+            </button>
+        </div>
+
+        <!-- Dropdown for example code -->
+        <label class="ms-auto mb-0 fw-semibold" style="font-size:14px;">Code Examples:</label>
+        <select class="form-select form-select-sm ms-1" style="width:auto;" @onchange="OnTestFileSelected">
+            <option value="">Select Example</option>
+            @foreach (var file in testFiles)
+            {
+                <option value="@file">@file</option>
+            }
+        </select>
+    </div>
+    <div class="card-body p-0">
+        <div id="sourceCodeEditor" style="height:500px;"></div>
+    </div>
+</div>
+
+<br />
+<br />
+
+<!-- Compiler Output Card -->
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>Compiler Output</strong>
+    </div>
+
+    <div class="card-body">
+        <div style="display:flex;gap:10px;">
+
+            <!-- Assembly Code Editor -->
+            <div style="flex:1;">
+                <div class="d-flex align-items-center mb-1">
+                    <strong>Assembly Code</strong>
+                    <div class="btn-group btn-group-sm ms-3">
+                        <button class="btn btn-outline-secondary" @onclick='() => UploadToEditor("GetAssemblyCodeMonacoContent", "SetAssemblyCodeMonacoContent")' title="Open File">
+                            <img src="assets/openFile.png" alt="Open" style="height:16px;" /> Open
+                        </button>
+                        <button class="btn btn-outline-secondary" @onclick='() => DownloadFromEditor("GetAssemblyCodeMonacoContent", "output.asm")' title="Save File">
+                            <img src="assets/saveFile.png" alt="Save" style="height:16px;" /> Save
+                        </button>
+                    </div>
+                </div>
+                <div id="assemblyCodeEditor" style="height:500px;border:1px solid #ccc;"></div>
+            </div>
+
+            <!-- Machine Code Editor -->
+            <div style="flex:1;">
+                <div class="d-flex align-items-center mb-1">
+                    <strong>Machine Code</strong>
+                    <div class="btn-group btn-group-sm ms-3">
+                        <button class="btn btn-outline-secondary" @onclick='() => UploadToEditor("GetMachineCodeMonacoContent", "SetMachineCodeMonacoContent")' title="Open File">
+                            <img src="assets/openFile.png" alt="Open" style="height:16px;" /> Open
+                        </button>
+                        <button class="btn btn-outline-secondary" @onclick='() => DownloadFromEditor("GetMachineCodeMonacoContent", "output.bin")' title="Save File">
+                            <img src="assets/saveFile.png" alt="Save" style="height:16px;" /> Save
+                        </button>
+                    </div>
+                </div>
+                <div id="machineCodeEditor" style="height:500px;border:1px solid #ccc;"></div>
+            </div>
+
+            <!-- Opcode Definitions Editor -->
+            <div style="flex:1;">
+                <div class="d-flex align-items-center mb-1">
+                    <strong>Opcode Definitions</strong>
+                    <div class="btn-group btn-group-sm ms-3">
+                        <button class="btn btn-outline-secondary" @onclick='() => UploadToEditor("GetOpcodeMapMonacoContent", "SetOpcodeMapMonacoContent")' title="Open File">
+                            <img src="assets/openFile.png" alt="Open" style="height:16px;" /> Open
+                        </button>
+                        <button class="btn btn-outline-secondary" @onclick='() => DownloadFromEditor("GetOpcodeMapMonacoContent", "opcodeDefinitions.txt")' title="Save File">
+                            <img src="assets/saveFile.png" alt="Save" style="height:16px;" /> Save
+                        </button>
+                    </div>
+                </div>
+                <div id="opcodeMapEditor" style="height:500px;border:1px solid #ccc;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+
+<!-- AST Visualization Card -->
+<div class="card mb-3">
+    <div class="card-header d-flex align-items-center gap-3">
+        <strong>AST Visualization</strong>
+        <div class="ms-5">
+            <label for="astDisplaySelect" class="mb-0">AST Display Type:</label>
+            <select id="astDisplaySelect" class="form-select form-select-sm d-inline-block" style="width:auto;" @onchange="OnASTDisplayChanged">
+                <option value="AST_Display_None">None</option>
+                <option selected value="AST_Display_1">Display AST</option>
+                <option value="AST_Display_2">Display Sequential AST</option>
+            </select>
+        </div>
+    </div>
+
+    @if (ASTDisplay != "AST_Display_None" && !string.IsNullOrEmpty(dependencyGraphSVG))
+    {
+        <div id="ast-svg-container" style="border:solid 1px #ccc; overflow:hidden; height:500px; cursor:grab; user-select:none;">
+            @((MarkupString)dependencyGraphSVG)
+        </div>
+    }
+</div>
+
+<br />
+<br />
+
+<!-- 8-Bit Computer Programmer Card -->
+<div class="card mb-3">
+
+    <!-- Title And Connection Status -->
+    <div class="card-header d-flex align-items-center gap-2">
+        <strong>8-Bit Computer Programmer</strong>
+        @if (serialConnected)
+        {
+            <span class="badge bg-success">Connected</span>
+        }
+        else
+        {
+            <span class="badge bg-secondary">Disconnected</span>
+        }
+    </div>
+
+    <div class="card-body">
+        <!-- Connect/Program Buttons -->
+        <div class="d-flex gap-2 flex-wrap mb-4">
+            <button class="btn @(serialConnected ? "btn-danger" : "btn-success") me-3" @onclick="ToggleSerialConnection">
+                <img src="assets/connect.png" alt="Connect" style="height:16px;" />
+                @(serialConnected ? "Disconnect" : "Connect")
+            </button>
+            <button class="btn btn-primary me-3" @onclick="ProgramDevice" disabled="@(!serialConnected)">
+                <img src="assets/program.png" alt="Program" style="height:16px;" /> Program
+            </button>
+        </div>
+
+        <!-- Clock Speed Dropdown -->
+        <div class="mb-4 d-flex align-items-center" style="max-width: 350px;">
+            <label class="form-label mb-0 me-2" style="white-space:nowrap;">Clock Speed</label>
+            <select class="form-select" style="width: 150px;" @onchange="OnClockSpeedChanged">
+                <option value="0000">0.075 Hz</option>
+                <option value="1000">0.15 Hz</option>
+                <option value="0100">0.3 Hz</option>
+                <option value="1100">0.6 Hz</option>
+                <option value="0010">1.2 Hz</option>
+                <option value="1010">2.4 Hz</option>
+                <option value="0110">4.9 Hz</option>
+                <option value="1110">9.8 Hz</option>
+                <option value="0001">19.5 Hz</option>
+                <option value="1001">39 Hz</option>
+                <option value="0101">71.1 Hz</option>
+                <option value="1101">156.2 Hz</option>
+                <option value="0011">312.5 Hz</option>
+                <option value="1011">625 Hz</option>
+                <option value="0111">1.25 kHz</option>
+                <option value="1111">2.5 kHz</option>
+            </select>
+        </div>
+
+        <!-- Remaining Controls -->
+        <div class="d-flex gap-2 flex-wrap mb-3">
+            <button class="btn btn-outline-secondary" @onclick="ResetDevice" disabled="@(!serialConnected)">
+                <img src="assets/reset.png" alt="Reset" style="height:16px;" /> Reset
+            </button>
+            <button class="btn btn-outline-secondary" @onclick="StartClock" disabled="@(!serialConnected)">
+                <img src="assets/startClock.png" alt="Start" style="height:16px;" /> Start Clock
+            </button>
+            <button class="btn btn-outline-secondary" @onclick="StopClock" disabled="@(!serialConnected)">
+                <img src="assets/stopClock.png" alt="Stop" style="height:16px;" /> Stop Clock
+            </button>
+            <button class="btn btn-outline-secondary" @onclick="StepClock" disabled="@(!serialConnected)">
+                <img src="assets/stepClock.png" alt="Step" style="height:16px;" /> Step
+            </button>
+        </div>
+
+        @if (!string.IsNullOrEmpty(programmerStatus))
+        {
+            <div class="alert alert-info mt-3 py-1 px-3 mb-0">@programmerStatus</div>
+        }
+    </div>
+</div>
+
+
+
+@code {
+
+    #region Properties and Fields
+
+    private string ASTDisplay = "AST_Display_1";
+    private bool astNeedsInit = false;
+    bool showDependencyGraph = false;
+    string dependencyGraphSVG = "";
+
+    //Editor contents
+    private string sourceCode = string.Empty;
+    private string assemblyCode = string.Empty;
+    private string machineCode = string.Empty;
+    private string opcodeMap = string.Empty;
+
+    private string sysmbols = string.Empty;
+    private bool showSymbols = false;
+
+    private Compiler.ProgramNode programNodeOut;
+
+    private List<string> compilerMessages = new List<string>();
+
+    private string[] testFiles = new string[] { "code example 1.mylang", "code example 2.mylang", "code example 3.mylang", "addition example.mylang", "subtraction example.mylang", "multiplication example.mylang", "division example.mylang" };
+
+    private int memAddressLength = 4;
+    private int memWordLength = 8;
+    private int memSize = 16;
+
+    #endregion
+
+
+    #region Initialization 
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Try to load from local storage first
+            var saved = await localStorage.GetItemAsync<string>("sourceCode");
+            if (!string.IsNullOrEmpty(saved))
+            {
+                sourceCode = saved;
+                //Not needed It will be done by the initialization of the Monaco editor with the loaded content.
+                //await jsRuntime.InvokeVoidAsync("SetSourceCodeMonacoContent", sourceCode);
+            }
+            /*else
+            {
+                // Fallback to loading default file
+                try
+                {
+                    sourceCode = await jsRuntime.InvokeAsync<string>(
+                        "eval",
+                        "(async () => (await (await fetch('Test/test source code.mylang')).text()))()"
+                    );
+                }
+                catch
+                {
+                    sourceCode = "// Could not load test source code.mylang";
+                }
+            }*/
+
+            //Load default opcode definitions.
+            try
+            {
+                opcodeMap = await jsRuntime.InvokeAsync<string>(
+                    "eval",
+                    "(async () => (await (await fetch('Test/test opcodes.txt')).text()))()"
+                );
+            }
+            catch
+            {
+                opcodeMap = "// Could not load test opcodes.txt";
+            }
+
+            //Initialize Monaco editors with loaded content.
+            await jsRuntime.InvokeVoidAsync("InitializeMonaco", sourceCode, assemblyCode, machineCode, opcodeMap);
+
+            //Register .NET ref for JS callbacks.
+            var selfRef = DotNetObjectReference.Create(this);
+            await jsRuntime.InvokeVoidAsync("SetDotNetHomeRef", selfRef);
+        }
+
+        if (astNeedsInit)
+        {
+            astNeedsInit = false;
+            await jsRuntime.InvokeVoidAsync("InitAstPanZoom", "ast-svg-container");
+        }
+    }
+
+    #endregion
+
+
+    #region Compilation
+
+    private async Task CompileAndRender()
+    {
+        //A bit inneficient to compile multiple times, but it's good enough for this simple project.
+        await compile(4, Compiler.CompilerOutput.Assembly);
+        await compile(4, Compiler.CompilerOutput.MachineCode);
+        await compile(4, Compiler.CompilerOutput.Symbols);
+
+        if (programNodeOut is not null)
+            await RenderAST(programNodeOut);
+
+        //If symbols are available, build the source to assembly mapping.
+        if (!string.IsNullOrEmpty(sysmbols))
+            await BuildAndApplySymbolMapping();
+    }
+
+    private async Task compile(int bits = 4, Compiler.CompilerOutput outputType = Compiler.CompilerOutput.Assembly)
+    {
+        compilerMessages.Clear();
+        programNodeOut = null;
+
+        sourceCode = await jsRuntime.InvokeAsync<string>("GetSourceCodeMonacoContent");
+        string opcodeText = await jsRuntime.InvokeAsync<string>("GetOpcodeMapMonacoContent");
+
+        try
+        {
+            Compiler.CompileResult result = Compiler.Compile(sourceCode, opcodeText, bits, outputType, memAddressLength, memWordLength, memSize, out programNodeOut);
+            List<string> compilerOutput = result.Output;
+
+            string outputTypeExtension = string.Empty;
+            switch (outputType)
+            {
+                case Compiler.CompilerOutput.Assembly:
+                    outputTypeExtension = ".asm";
+                    assemblyCode = string.Join(Environment.NewLine, compilerOutput);
+
+                    await jsRuntime.InvokeVoidAsync("SetAssemblyCodeMonacoContent", assemblyCode);
+                    break;
+                case Compiler.CompilerOutput.MachineCode:
+                    outputTypeExtension = ".bin";
+                    machineCode = string.Join(Environment.NewLine, compilerOutput);
+
+                    await jsRuntime.InvokeVoidAsync("SetMachineCodeMonacoContent", machineCode);
+                    break;
+                case Compiler.CompilerOutput.Symbols:
+                    outputTypeExtension = ".pdb";
+                    sysmbols = string.Join(Environment.NewLine, compilerOutput);
+                    break;
+                default:
+                    break;
+            }
+
+            compilerMessages.AddRange(result.Messages);
+            compilerMessages.Add($"Compilation successful.");
+        }
+        catch (Exception ex)
+        {
+            compilerMessages.Add($"Error: {ex.Message}");
+        }
+    }
+
+    #endregion
+
+
+    #region Programmer
+
+    //////////////////// Programmer variables //////////////////////
+    
+    private bool serialConnected = false;
+    private string programmerStatus = string.Empty;
+    private string clockSpeed = "0000";
+
+    private const string StartChar = "_";
+    private const int BaudRate = 115200;
+
+    private string[] programData = Array.Empty<string>();
+    private int memDataPosition = 0;
+    private DotNetObjectReference<Home>? serialDotNetRef;
+
+    /////////////////////////////////////////////////////////////////
+
+
+    private async Task ToggleSerialConnection()
+    {
+        if (serialConnected)
+        {
+            var result = await jsRuntime.InvokeAsync<bool>("SerialDisconnect");
+            if (result)
+            {
+                serialConnected = false;
+                programmerStatus = "Serial port closed.";
+            }
+        }
+        else
+        {
+            bool supported = await jsRuntime.InvokeAsync<bool>("SerialIsSupported");
+            if (!supported)
+            {
+                programmerStatus = "Web Serial API is not supported in this browser. Use Chrome or Edge.";
+                return;
+            }
+
+            serialDotNetRef = DotNetObjectReference.Create(this);
+            var result = await jsRuntime.InvokeAsync<bool>("SerialConnect", BaudRate, serialDotNetRef);
+            if (result)
+            {
+                serialConnected = true;
+                programmerStatus = "Serial port opened.";
+            }
+            else
+            {
+                programmerStatus = "Failed to connect. Make sure you select a port.";
+            }
+        }
+        StateHasChanged();
+    }
+
+    private async Task SendSerial(string data)
+    {
+        if (!serialConnected)
+        {
+            programmerStatus = "Open the serial port before sending data!";
+            return;
+        }
+
+        await jsRuntime.InvokeAsync<bool>("SerialSend", StartChar + data + "\n");
+    }
+
+    private async Task ProgramDevice()
+    {
+        string binaryContent = await jsRuntime.InvokeAsync<string>("GetMachineCodeMonacoContent");
+
+        if (string.IsNullOrWhiteSpace(binaryContent))
+        {
+            programmerStatus = "No machine code to program. Compile first!";
+            return;
+        }
+
+        int totalLength = memAddressLength + memWordLength;
+
+        //Match AsmIDE: strip ALL whitespace/newlines, then read totalLength chunks.
+        //The address column IS part of the data (Arduino uses bits [8-11] as RAM address).
+        binaryContent = Regex.Replace(binaryContent, @"\r\n?|\n", "");
+        binaryContent = Regex.Replace(binaryContent, @"\s+", "");
+
+        programData = new string[memSize];
+        for (int i = 0; i < memSize; i++)
+        {
+            string memAddressContents = "";
+            for (int j = 0; j < totalLength; j++)
+            {
+                int idx = j + (i * totalLength);
+                memAddressContents += idx < binaryContent.Length ? binaryContent[idx] : '0';
+            }
+            programData[i] = memAddressContents;
+        }
+
+        memDataPosition = 0;
+
+        //Format header values with padding matching the Arduino protocol.
+        string addrLen = memAddressLength.ToString().PadLeft(2, '0');
+        string wordLen = memWordLength.ToString().PadLeft(2, '0');
+        string memSizeStr = memSize.ToString().PadLeft(5, '0');
+
+        //Send first packet: command + header + first data chunk.
+        await SendSerial("prog" + addrLen + wordLen + memSizeStr + programData[memDataPosition]);
+        memDataPosition++;
+
+        programmerStatus = "Programming... sending data packet 1/" + memSize;
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public async Task OnSerialDataReceived(string data)
+    {
+        data = data.Trim();
+
+        if (data == "ok")
+        {
+            if (memDataPosition < memSize)
+            {
+                string addrLen = memAddressLength.ToString().PadLeft(2, '0');
+                string wordLen = memWordLength.ToString().PadLeft(2, '0');
+                string memSizeStr = memSize.ToString().PadLeft(5, '0');
+
+                await SendSerial("prog" + addrLen + wordLen + memSizeStr + programData[memDataPosition]);
+                memDataPosition++;
+
+                programmerStatus = $"Programming... sending data packet {memDataPosition}/{memSize}";
+            }
+        }
+        else if (data == "prog done")
+        {
+            //AsmIDE sends "done" WITHOUT the startChar prefix.
+            if (serialConnected)
+                await jsRuntime.InvokeAsync<bool>("SerialSend", "done\n");
+
+            memDataPosition = 0;
+            programmerStatus = "Programming complete!";
+        }
+        else if (data.EndsWith("done"))
+        {
+            programmerStatus = $"Command completed: {data}";
+        }
+        else
+        {
+            programmerStatus = $"Arduino: {data}";
+        }
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task ResetDevice() => await SendSerial("rset");
+    private async Task StartClock() => await SendSerial("strt");
+    private async Task StopClock() => await SendSerial("stop");
+    private async Task StepClock() => await SendSerial("step");
+
+    private async Task OnClockSpeedChanged(ChangeEventArgs e)
+    {
+        clockSpeed = e.Value?.ToString() ?? "0000";
+
+        await SendSerial("clks" + clockSpeed);
+    }
+   
+    #endregion
+
+
+    #region AST Visualization
+
+    private async Task OnASTDisplayChanged(ChangeEventArgs e)
+    {
+        ASTDisplay = e.Value?.ToString() ?? "";
+
+        await compile();
+
+        if (programNodeOut != null)
+            await RenderAST(programNodeOut);
+    }
+
+    private async Task RenderAST(Compiler.ProgramNode programNode)
+    {
+        if (programNode == null || ASTDisplay == "AST_Display_None")
+        {
+            dependencyGraphSVG = string.Empty;
+            return;
+        }
+
+        string dot = ConvertASTToDot(programNode);
+        dependencyGraphSVG = await jsRuntime.InvokeAsync<string>("renderDotToSvg", dot);
+        astNeedsInit = true;
+    }
+
+
+    private string ConvertASTToDot(Compiler.ProgramNode programNode)
+
+    {
+        StringBuilder dot = new StringBuilder();
+        dot.AppendLine("digraph AST {");
+
+        //Add the root node(ProgramNode).
+        dot.AppendLine($"  {_getId(programNode)} [label=\"Program\"];");
+
+        Compiler.Node prev = null;
+        foreach (var stmt in programNode.Statements)
+        {
+            convertNodeToDotRecursive(stmt, dot, _getId(programNode));
+
+            if (ASTDisplay == "AST_Display_2")
+            {
+                if (prev != null)
+                {
+                    string stmtId = stmt.GetHashCode().ToString();
+                    dot.AppendLine($"  {prev.GetHashCode()} -> {stmtId} [style=dashed,label=\"next statement\"];");
+                }
+
+                prev = stmt;
+            }
+        }
+
+        dot.AppendLine("}");
+        return dot.ToString();
+
+
+
+        //Helper to generate unique node ids for a given object.
+        string _getId(object obj)
+        {
+            return obj.GetHashCode().ToString();
+        }
+    }
+
+    private void convertNodeToDotRecursive(Compiler.Node node, StringBuilder dot, string parentId)
+    {
+        if (node == null)
+            return;
+
+        string nodeId = node.GetHashCode().ToString();
+        string label = node.GetType().Name;
+        string extra = "";
+
+        switch (node)
+        {
+            case Compiler.LabelNode l:
+                extra = $"\\n{l.Name}";
+                break;
+            case Compiler.GotoNode g:
+                extra = $"\\n{g.TargetLabel}";
+                break;
+            case Compiler.PrintNode p:
+                extra = $"\\n{p.Target}{(p.IsImmediate ? " (imm)" : "")}";
+                break;
+            case Compiler.AssignmentNode a:
+                extra = $"\\n{a.TargetVariable}";
+                break;
+            case Compiler.IfBlockNode ib:
+                extra = $"\\n{ib.Left} {ib.Operator} {ib.Right}";
+                break;
+            case Compiler.LiteralNode lit:
+                extra = $"\\n{lit.Value}";
+                break;
+            case Compiler.VariableNode v:
+                extra = $"\\n{v.Name}";
+                break;
+            case Compiler.BinaryOpNode b:
+                extra = $"\\n{b.Operator}";
+                break;
+        }
+
+        dot.AppendLine($"  {nodeId} [label=\"{label}{extra}\"];");
+        dot.AppendLine($"  {parentId} -> {nodeId};");
+
+        //Recursively handle children.
+        switch (node)
+        {
+            case Compiler.AssignmentNode a:
+                if (a.Expression != null)
+                    convertNodeToDotRecursive(a.Expression, dot, nodeId);
+                break;
+            case Compiler.IfBlockNode ib:
+                foreach (var stmt in ib.Statements)
+                    convertNodeToDotRecursive(stmt, dot, nodeId);
+                break;
+            case Compiler.BinaryOpNode b:
+                if (b.Left != null)
+                    convertNodeToDotRecursive(b.Left, dot, nodeId);
+                if (b.Right != null)
+                    convertNodeToDotRecursive(b.Right, dot, nodeId);
+                break;
+        }
+    }
+
+    #endregion
+
+
+    #region Editors Code
+
+    [JSInvokable]
+    public async Task SourceCodeEditorContentChanged(string text)
+    {
+        sourceCode = text;
+        await localStorage.SetItemAsync("sourceCode", sourceCode);
+    }
+
+    [JSInvokable]
+    public async Task OnAssemblyCodeChanged()
+    {
+        string asmText = await jsRuntime.InvokeAsync<string>("GetAssemblyCodeMonacoContent");
+        string opcodeText = await jsRuntime.InvokeAsync<string>("GetOpcodeMapMonacoContent");
+
+        machineCode = Compiler.CodeGenerator.AssemblyToMachineCode(asmText, opcodeText, memAddressLength, memWordLength, memSize);
+
+        await jsRuntime.InvokeVoidAsync("SetMachineCodeMonacoContent", machineCode);
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+
+    //Parses the symbols output and builds a mapping of source code lines to assembly lines.
+    //Symbols format: "ASSEMBLY_INSTRUCTION    :sourceCodeLine:[variable]"
+    private async Task BuildAndApplySymbolMapping()
+    {
+        //Parse source code to get its lines for matching.
+        sourceCode = await jsRuntime.InvokeAsync<string>("GetSourceCodeMonacoContent");
+        var sourceLines = sourceCode.Split('\n');
+
+        //Parse symbols: each line is "ASM_INSTRUCTION    :sourceLine" or "ASM_INSTRUCTION    :sourceLine:[var]"
+        var symbolLines = sysmbols.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+        //Build mapping: sourceLineNumber (1-based) -> list of assemblyLineNumbers (1-based)
+        var sourceToAssemblyMap = new Dictionary<int, List<int>>();
+
+        for (int asmLineIdx = 0; asmLineIdx < symbolLines.Length; asmLineIdx++)
+        {
+            string symLine = symbolLines[asmLineIdx];
+
+            //The separator between assembly and source info is "    :" (4 spaces + colon)
+            int separatorIdx = symLine.IndexOf("    :");
+            if (separatorIdx < 0) 
+                continue;
+
+            string afterSeparator = symLine.Substring(separatorIdx + 5); // skip "    :"
+
+            //Remove the [variable] part if present.
+            int bracketIdx = afterSeparator.IndexOf(":[");
+            string srcText = bracketIdx >= 0 ? afterSeparator.Substring(0, bracketIdx) : afterSeparator;
+            srcText = srcText.Trim();
+
+            if (string.IsNullOrEmpty(srcText)) 
+                continue;
+
+            //Find which source line this matches (1-based)
+            for (int srcIdx = 0; srcIdx < sourceLines.Length; srcIdx++)
+            {
+                if (sourceLines[srcIdx].Trim().Contains(srcText))
+                {
+                    int srcLineNum = srcIdx + 1; // 1-based
+                    int asmLineNum = asmLineIdx + 1; // 1-based
+
+                    if (!sourceToAssemblyMap.ContainsKey(srcLineNum))
+                        sourceToAssemblyMap[srcLineNum] = new List<int>();
+
+                    if (!sourceToAssemblyMap[srcLineNum].Contains(asmLineNum))
+                        sourceToAssemblyMap[srcLineNum].Add(asmLineNum);
+
+                    break; //Take first match
+                }
+            }
+        }
+
+        //Send the mapping to JS
+        await jsRuntime.InvokeVoidAsync("SetSymbolMapping", sourceToAssemblyMap);
+
+        //Enable/disable based on checkbox
+        if (showSymbols)
+        {
+            await jsRuntime.InvokeVoidAsync("EnableSymbolTracking", true);
+        }
+    }
+
+    private async Task OnShowSymbolsChanged()
+    {
+        if (showSymbols && !string.IsNullOrEmpty(sysmbols))
+        {
+            await jsRuntime.InvokeVoidAsync("EnableSymbolTracking", true);
+        }
+        else
+        {
+            await jsRuntime.InvokeVoidAsync("EnableSymbolTracking", false);
+        }
+    }
+
+
+    private async Task UploadToEditor(string getterFn, string setterFn)
+    {
+        var content = await jsRuntime.InvokeAsync<string>("UploadFilePrompt");
+        if (content != null)
+        {
+            await jsRuntime.InvokeVoidAsync(setterFn, content);
+        }
+    }
+
+    private async Task DownloadFromEditor(string getterFn, string defaultFilename)
+    {
+        var content = await jsRuntime.InvokeAsync<string>(getterFn);
+        if (!string.IsNullOrEmpty(content))
+        {
+            await jsRuntime.InvokeVoidAsync("DownloadFile", defaultFilename, content);
+        }
+    }
+
+
+    private async Task OnTestFileSelected(ChangeEventArgs e)
+    {
+        string selectedFile = e.Value?.ToString();
+
+        if (!string.IsNullOrEmpty(selectedFile))
+        {
+            try
+            {
+                //Load the selected test file into the source code editor.
+                sourceCode = await jsRuntime.InvokeAsync<string>(
+                    "eval",
+                    $"(async () => (await (await fetch('Test/Code/{selectedFile}')).text()))()"
+                );
+
+                //Set the Monaco editor contents.
+                await jsRuntime.InvokeVoidAsync("SetSourceCodeMonacoContent", sourceCode);
+            }
+            catch (Exception ex)
+            {
+                compilerMessages.Add($"Error loading test file: {ex.Message}");
+            }
+        }
+    }
+
+    #endregion
+}

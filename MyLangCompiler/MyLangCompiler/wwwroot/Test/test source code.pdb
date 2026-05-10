@@ -1,0 +1,17 @@
+LDAD 10    //     [x]
+STA 15    //     [y]
+LDAD 5    //     [y]
+STA 16    // 
+LDA 15    //     [y]
+SUB 16    //     [y]
+JMC 9    //     [x]
+LDA 16    //     [x]
+OUT    // 
+LDA 15    // 
+ADD 16    // 
+STA 15    // 
+LDA 15    // 
+OUT    // 
+HLT    // 
+15
+16

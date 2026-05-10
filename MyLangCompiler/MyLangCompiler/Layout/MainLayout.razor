@@ -1,0 +1,44 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <main>
+        <div class="top-row px-4 d-flex justify-content-between align-items-center">
+            <h1 class="mb-0 me-auto d-flex align-items-center" style="font-size: 1.25rem; font-weight: 600;">
+                <img src="favicon.ico" alt="App Icon" style="height: 2em; width: 2em; margin-right: 0.5em;" />
+                AsmIDE + MyLang Compiler
+            </h1>
+            <div style="font-size:1.25rem;font-weight:600;" @onclick="() => showAbout = true">About</div>
+        </div>
+
+        <article class="content">
+            @Body
+        </article>
+    </main>
+</div>
+
+@if (showAbout)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color:rgba(0,0,0,0.5);" @onclick="() => showAbout = false">
+        <div class="modal-dialog" @onclick:stopPropagation="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">About</h5>
+                    <button type="button" class="btn-close" @onclick="() => showAbout = false"></button>
+                </div>
+                <div class="modal-body">
+                    <p>MyLang Compiler is a custom language compiler targeting a custom 8-bit architecture.</p>
+
+                    <p><a href="https://eecs.blog/8-bit-computer-in-an-fpga/" target="_blank">EECS Blog: 8-bit Computer in an FPGA</a></p>
+                    <p><a href="https://github.com/EECSB/8Bit-Computer" target="_blank">GitHub: 8Bit-Computer</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="() => showAbout = false">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool showAbout = false;
+}

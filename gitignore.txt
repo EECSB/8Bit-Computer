@@ -1,0 +1,14 @@
+# .gitignore
+
+# Build output
+bin/
+obj/
+
+# Visual Studio settings
+.vs/
+
+# Node.js dependencies
+node_modules/
+
+# Webpack bundles
+webpack-bundle/

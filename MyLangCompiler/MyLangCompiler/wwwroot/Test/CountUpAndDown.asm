@@ -1,0 +1,16 @@
+OUT
+ADD 15
+JMC 4
+JMP 0
+SUB 15
+OUT
+JMZ 0
+JMP 4
+
+
+
+
+
+
+4
+1

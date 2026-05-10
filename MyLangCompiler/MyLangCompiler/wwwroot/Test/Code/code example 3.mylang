@@ -1,0 +1,10 @@
+x = 10; 
+y = 5;
+
+print(y);
+goto skip;
+print(x);
+
+skip: 
+    x = x + y;
+    print(x);
