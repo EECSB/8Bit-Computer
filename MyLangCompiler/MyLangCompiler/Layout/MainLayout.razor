@@ -19,20 +19,25 @@
 @if (showAbout)
 {
     <div class="modal fade show d-block" tabindex="-1" style="background-color:rgba(0,0,0,0.5);" @onclick="() => showAbout = false">
-        <div class="modal-dialog" @onclick:stopPropagation="true">
+        <div class="modal-dialog" style="max-width: 800px; width: 90%;" @onclick:stopPropagation="true">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">About</h5>
+                    <h4 class="modal-title">About</h4>
                     <button type="button" class="btn-close" @onclick="() => showAbout = false"></button>
                 </div>
                 <div class="modal-body">
-                    <p>MyLang Compiler is a custom language compiler targeting a custom 8-bit architecture.</p>
+                    <p>
+                        MyLang Compiler is a custom language compiler targeting a custom 8-bit ISA I made I while ago, see my blog post about it:
+                        <a href="https://eecs.blog/8-bit-computer-in-an-fpga/" target="_blank">EECS Blog: 8-bit Computer in an FPGA</a>
+                    </p>
 
-                    <p><a href="https://eecs.blog/8-bit-computer-in-an-fpga/" target="_blank">EECS Blog: 8-bit Computer in an FPGA</a></p>
-                    <p><a href="https://github.com/EECSB/8Bit-Computer" target="_blank">GitHub: 8Bit-Computer</a></p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" @onclick="() => showAbout = false">Close</button>
+                    <p>
+                        Initially I was going to make a C compiler for learning/fun but then I thought I'd be nice if I actually made simple compiler for my 8 bit computer I made.
+                    </p>
+
+                    <p>
+                        GitHub Repo: <a href="https://github.com/EECSB/8Bit-Computer" target="_blank">8Bit-Computer</a>
+                    </p>
                 </div>
             </div>
         </div>

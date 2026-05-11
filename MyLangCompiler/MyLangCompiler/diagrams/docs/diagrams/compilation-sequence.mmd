@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User
+    participant Lexer
+    participant Parser
+    participant AST
+    participant CodeGen
+    participant Hardware
+    User->>Lexer: Source Code
+    Lexer->>Parser: Tokens
+    Parser->>AST: AST
+    AST->>CodeGen: Nodes
+    CodeGen->>Hardware: Machine Code

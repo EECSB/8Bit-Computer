@@ -1,0 +1,8 @@
+graph TD
+    A[Program]
+    A --> B[Assignment x=5]
+    A --> C[Assignment y=x+2]
+    A --> D[Print y]
+    C --> E[BinaryOp +]
+    E --> F[Variable x]
+    E --> G[Literal 2]

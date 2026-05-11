@@ -1,0 +1,24 @@
+classDiagram
+    class ProgramNode {
+        Statements
+    }
+    class AssignmentNode {
+        Variable
+        Expression
+    }
+    class PrintNode {
+        Value
+    }
+    class GotoNode {
+        Label
+    }
+    class IfBlockNode {
+        Condition
+        Statements
+        ElseStatements
+    }
+    class BinaryOpNode {
+        Left
+        Operator
+        Right
+    }

@@ -1,96 +1,397 @@
-Here's the improved README.md file, incorporating the new content while maintaining the existing structure and coherence:
-
-# AsmIDE: A Blazor WebAssembly IDE for 8-Bit Computer
+﻿# MyLang Compiler + AsmIDE Project Documentation
 
 ## Overview
 
-AsmIDE is a Blazor WebAssembly IDE and compiler for a custom 8-bit computer, built on .NET 9. The architecture is modular, separating the user interface, compiler logic, and hardware communication. This design allows for easy maintenance and scalability, making it suitable for both educational purposes and hobbyist projects.
+**MyLangCompiler + AsmIDE** is a Blazor WebAssembly-based IDE and compiler toolchain for a custom 8-bit computer architecture.
+MyLang is a custom language compiler targeting a custom 8-bit ISA I made I while ago, see my blog post about it: <a href="https://eecs.blog/8-bit-computer-in-an-fpga/" target="_blank">EECS Blog: 8-bit Computer in an FPGA</a>
+
+Initially I was going to make a C compiler for learning/fun but then I thought I'd be nice if I actually made simple compiler for my 8 bit computer I made.
+
+<br>
+
+**Web App:** [AsmIDE + MyLang Compiler](https://eecs.blog/BlazorApps/MyLangCompiler/)
+
+**GitHub Repo:** [8-Bit Computer](https://github.com/EECSB/8Bit-Computer)
+
+<br>
+
+### The project combines:
+
+- A browser-based code editor UI
+- A custom high-level language compiler (`.mylang`)
+- Assembly generation
+- Machine code generation
+- Symbol/debug output
+- Hardware upload via serial communication
+
+### Core Purpose
+
+The system enables users to:
+
+1. Write code in a simplified educational programming language
+2. Compile it into assembly or machine code
+3. Debug symbol mappings
+4. Upload binaries to custom hardware
 
 ---
 
-## Key Components
+# High-Level System Architecture
 
-### 1. User Interface (UI) Layer
-- **Blazor WebAssembly Frontend:** A modern, responsive web-based editor for writing and managing code.
-- **File Management:** Features for opening, editing, and saving source/definition files.
-- **Serial Communication UI:** Provides a user-friendly interface to connect to hardware for code upload and testing.
-
-### 2. Compiler Core
-
-#### a. Lexer (Tokenizer)
-- Converts source code into a sequence of tokens (keywords, identifiers, literals, operators).
-- **Output:** A list of tokens that represent the elements of the source code.
-
-#### b. Parser
-- Consumes tokens and builds an Abstract Syntax Tree (AST) representing the program structure.
-- **Output:** AST nodes for instructions, labels, expressions, and other constructs.
-
-#### c. Abstract Syntax Tree (AST)
-- A tree structure modeling the logical structure of the code.
-- Used for semantic analysis, code generation, and error reporting.
-
-#### d. Semantic Analyzer
-- Checks the AST for semantic correctness, ensuring there are no undefined labels or invalid instructions.
-- **Output:** An annotated AST or error messages indicating issues found during analysis.
-
-#### e. Code Generator
-- Traverses the AST and emits target machine code or binary for the 8-bit architecture.
-- **Output:** Binary code or a memory image ready for hardware upload.
-
-### 3. Hardware Communication Layer
-- **Serial Port Interface:** Facilitates communication with the 8-bit computer hardware via UART for code upload and control.
-- **State Management:** Tracks connection status, memory layout, and upload progress to ensure smooth operation.
+<div align="center">
+<!-- System Architecture Diagram -->
+<img src="diagrams/docs/images/system-architecture.svg" alt="System Architecture" style="max-width:100%;" />
+</div>
 
 ---
 
-## Data Flow Diagram
+# Project Structure
 
-flowchart TD
-    A["User Edits Code in Browser"] --> B["Lexer (Tokenizer)"]
-    B --> C["Parser"]
-    C --> D["AST (Abstract Syntax Tree)"]
-    D --> E["Semantic Analyzer"]
-    E --> F["Code Generator"]
-    F --> G["Binary Output"]
-    G --> H["Serial Port Upload"]
-    H --> I["8-bit Computer Hardware"]
+```text
+MyLangCompiler/
+│
+├── Code/
+│   └── Compiler.cs              # Full compiler pipeline
+│
+├── Pages/
+│   └── Home.razor               # Main IDE UI
+│
+├── Layout/
+│   └── MainLayout.razor         # App shell
+│
+├── NpmJS/
+│   └── MonacoInterop.js         # Monaco code editor integration
+│
+├── wwwroot/
+│   ├── js/
+│   │   ├── JSUtils.js
+│   │   └── SerialInterop.js     # Browser serial APIs
+│   │
+│   └── Test/                    # Sample programs and generated code
+│
+└── README.md / ARCHITECTURE.md
+```
 
 ---
 
-## Example: Token, AST Node, and Code Generation (Pseudocode)
+# Compiler Pipeline
 
-// Token definition
-public class Token
-{
-    public TokenType Type { get; }
-    public string Value { get; }
+## Compilation Stages
+
+<div align="center">
+<!-- Compiler Pipeline Diagram -->
+<img src="diagrams/docs/images/compiler-pipeline.svg" alt="Compiler Pipeline" style="max-width:100%;" />
+</div>
+
+---
+
+# Compiler Internals
+
+## 1. Lexer (Tokenizer)
+
+### Responsibilities
+
+The lexer scans raw source code and converts it into structured tokens.
+
+### Supported Token Types
+
+- Identifiers
+- Numbers
+- Operators (`+`, `-`, `*`, `/`)
+- Comparisons (`==`, `>`, `<`)
+- Assignment (`=`)
+- Keywords:
+  - `if`
+  - `else`
+  - `goto`
+  - `print`
+- Delimiters:
+  - `(` `)`
+  - `{` `}`
+  - `:` `;`
+
+### Features
+
+- Whitespace skipping
+- Line tracking
+- Comment skipping (`//`)
+- Error reporting with line numbers
+
+### Lexer Workflow
+
+<div align="center">
+<!-- Lexer Workflow Diagram -->
+<img src="diagrams/docs/images/lexer-workflow.svg" alt="Lexer Workflow" style="max-width:100%;" />
+</div>
+
+---
+
+# 2. Parser
+
+The parser converts tokens into an **Abstract Syntax Tree (AST)**.
+
+## Supported Statements
+
+### Labels
+```mylang
+start:
+```
+
+### Variable Assignment
+```mylang
+x = 5;
+y = x + 2;
+```
+
+### Printing
+```mylang
+print(x);
+```
+
+### Goto
+```mylang
+goto start;
+```
+
+### Conditional Blocks
+```mylang
+if x > 5 {
+    print(x);
+} else {
+    print(0);
 }
-
-// AST node example
-public abstract class AstNode { }
-public class InstructionNode : AstNode
-{
-    public string Mnemonic { get; }
-    public List<AstNode> Operands { get; } = new List<AstNode>();
-}
-
-// Code generator example
-public class CodeGenerator
-{
-    public byte[] Generate(AstNode ast)
-    {
-        // Traverse AST and emit binary
-    }
-}
+```
 
 ---
 
-## Summary
+## Parser Architecture
 
-- **AsmIDE** is a Blazor WebAssembly IDE designed for a custom 8-bit computer.
-- The **compiler architecture** includes essential components: Lexer, Parser, AST, Semantic Analyzer, and Code Generator.
-- **Hardware communication** is efficiently managed via a serial port for code upload and testing, ensuring a seamless user experience.
+<div align="center">
+<!-- AST Structure Diagram -->
+<img src="diagrams/docs/images/ast-structure.svg" alt="AST Structure" style="max-width:100%;" />
+</div>
 
-For more information, contributions, or to report issues, please refer to the project's documentation or contact the maintainers.
+---
 
-This revised README.md maintains the original structure while enhancing clarity and coherence, ensuring that users can easily understand the project's purpose and functionality.
+# 3. Abstract Syntax Tree Design
+
+The AST preserves logical program structure while abstracting syntax.
+
+## Example Source
+
+```mylang
+x = 5;
+y = x + 2;
+print(y);
+```
+
+## AST Representation
+
+<div align="center">
+<!-- AST Example Diagram -->
+<img src="diagrams/docs/images/ast-example.svg" alt="AST Example" style="max-width:100%;" />
+</div>
+
+---
+
+# 4. Code Generator
+
+The code generator transforms AST nodes into target assembly.
+
+## Internal Responsibilities
+
+- Variable allocation
+- Label resolution
+- Jump fixups
+- Immediate value validation
+- Symbol mapping
+- Data section generation
+- Machine code translation
+
+---
+
+## Code Generation Flow
+
+<div align="center">
+<!-- Code Generation Flow Diagram -->
+<img src="diagrams/docs/images/codegen-flow.svg" alt="Code Generation Flow" style="max-width:100%;" />
+</div>
+
+---
+
+# Assembly Instruction Set
+
+## Default Opcodes
+
+| Instruction | Purpose |
+|------------|---------|
+| `LDA` | Load from memory |
+| `LDAD` | Load immediate |
+| `STA` | Store accumulator |
+| `ADD` | Add |
+| `SUB` | Subtract |
+| `OUT` | Output |
+| `JMP` | Unconditional jump |
+| `JMC` | Jump on carry |
+| `JMZ` | Jump on zero |
+| `HLT` | Halt |
+
+---
+
+# Arithmetic Handling
+
+## Native Support
+
+- Addition
+- Subtraction
+
+## Emulated Support
+
+### Multiplication
+Implemented using repeated addition loops.
+
+### Division
+Implemented using repeated subtraction loops.
+
+This allows high-level arithmetic on minimal hardware.
+
+---
+
+# Variable & Memory Model
+
+## Memory Layout
+
+<div align="center">
+<!-- Memory Layout Diagram -->
+<img src="diagrams/docs/images/memory-layout.svg" alt="Memory Layout" style="max-width:100%;" />
+</div>
+
+### Key Concepts
+
+- Variables are assigned sequential memory addresses
+- Temporary variables are generated for expressions
+- Literal initialization may be optimized into data section
+- Labels are resolved after instruction generation
+
+---
+
+# Output Modes
+
+## 1. Assembly
+Human-readable generated assembly.
+
+## 2. Machine Code
+Binary/encoded opcode output.
+
+## 3. Symbols
+Assembly plus:
+
+- Source line mapping
+- Variable names
+- Debug metadata
+
+---
+
+# Compiler Entry Point
+
+## Main API
+
+```csharp
+Compiler.Compile(
+    sourceCode,
+    bits,
+    outputType,
+    opcodeDefinition,
+    memAddressLength,
+    memWordLength,
+    memSize
+)
+```
+
+### Steps:
+
+1. Lex source code
+2. Parse token stream
+3. Build AST
+4. Generate code
+5. Resolve labels/variables
+6. Output selected format
+
+---
+
+# UI Architecture
+
+<div align="center">
+<!-- UI Architecture Diagram -->
+<img src="diagrams/docs/images/ui-architecture.svg" alt="UI Architecture" style="max-width:100%;" />
+</div>
+
+---
+
+# Strengths of the Design
+
+## Advantages
+
+- Modular compiler stages
+- Educational readability
+- Hardware abstraction
+- Browser-based IDE
+- Symbol/debug generation
+- Custom opcode definitions
+- Extensible architecture
+
+---
+
+# Current Limitations
+
+## Known Constraints
+
+- Single-file compiler implementation (`Compiler.cs` is large)
+- Limited syntax features
+- Minimal optimization
+- Basic error handling
+- Multiplication/division are expensive
+- `<` operator support incomplete at ISA level
+- No advanced type system
+
+---
+
+# Recommended Future Improvements
+
+## Compiler Enhancements
+
+- Split compiler into separate files/modules
+- Add semantic analysis stage
+- Implement optimizer passes
+- Add function definitions
+- Add loops (`while`, `for`)
+- Improve diagnostics
+- Add register allocation
+- Expand ISA support
+
+## IDE Enhancements
+
+- Syntax highlighting
+- Breakpoints
+- Step debugging
+- Hardware memory viewer
+- Project system
+
+---
+
+# End-to-End Example
+
+## Source
+```mylang
+x = 5;
+y = x + 2;
+print(y);
+```
+
+## Compilation Sequence
+
+<div align="center">
+<!-- Compilation Sequence Diagram -->
+<img src="diagrams/docs/images/compilation-sequence.svg" alt="Compilation Sequence" style="max-width:100%;" />
+</div>
+
+---

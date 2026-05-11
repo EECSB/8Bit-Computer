@@ -1,0 +1,10 @@
+flowchart TD
+    A[Read Character] --> B{Whitespace?}
+    B -- Yes --> A
+    B -- No --> C{Comment?}
+    C -- Yes --> A
+    C -- No --> D{Digit?}
+    D -- Yes --> E[Parse Number]
+    D -- No --> F{Identifier?}
+    F -- Yes --> G[Parse Identifier / Keyword]
+    F -- No --> H[Parse Operator]

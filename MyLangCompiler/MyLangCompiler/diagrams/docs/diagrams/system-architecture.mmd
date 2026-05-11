@@ -1,0 +1,16 @@
+flowchart TD
+    A[Blazor WebAssembly UI] --> B[Monaco Editor Integration]
+    A --> C[Compiler Core]
+    A --> D[Serial Communication Layer]
+
+    C --> E[Lexer]
+    E --> F[Parser]
+    F --> G[AST Generation]
+    G --> H[Code Generator]
+    H --> I[Assembly Output]
+    H --> J[Machine Code Output]
+    H --> K[Symbol Output]
+
+    D --> L[UART / Serial Upload]
+    J --> L
+    L --> M[Custom 8-bit Computer]

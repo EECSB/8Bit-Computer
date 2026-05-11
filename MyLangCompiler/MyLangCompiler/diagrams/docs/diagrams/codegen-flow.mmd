@@ -1,0 +1,12 @@
+flowchart TD
+    A[AST Node] --> B{Type}
+    B --> C[Assignment]
+    B --> D[Print]
+    B --> E[Goto]
+    B --> F[If Block]
+    C --> G[Expression Evaluation]
+    G --> H[Store Variable]
+    D --> I[Load Value]
+    I --> J[OUT]
+    E --> K[JMP]
+    F --> L[Conditional Jumps]

@@ -1,0 +1,9 @@
+flowchart LR
+    A[Source Code] --> B[Lexer / Tokenizer]
+    B --> C[Token Stream]
+    C --> D[Parser]
+    D --> E[Abstract Syntax Tree]
+    E --> F[Code Generator]
+    F --> G[Assembly]
+    F --> H[Machine Code]
+    F --> I[Symbol Table]
