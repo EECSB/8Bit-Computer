@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "terser-webpack-plugin": "^5.3.7",
-    "webpack": "^5.91.0",
+    "webpack": "^5.106.2",
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
